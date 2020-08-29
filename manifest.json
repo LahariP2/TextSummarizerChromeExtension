@@ -8,21 +8,28 @@
         "48" : "icon48.png",
         "16" : "icon16b.png"
     },
+  
     "browser_action" : {
         "default_icon" : "icon16b.png",
         "default_popup" : "popup.html"
     },
+  
     "options_page" : "options.html",
+  
     "background": {
         "scripts": ["eventPage.js"],
         "persistent": false
     }, 
-
-
+  
     "permissions": [
         "storage",
         "notifications",
-        "contextMenu"
+        "contextMenus"
+    ],
+  
+    "web_accessible_resources": [
+        "icon48.png"
     ]
-
-}
+  
+ }
+ 
