@@ -1,5 +1,9 @@
 $(function(){
  
+    chrome.storage.sync.get('summarizedTextPop', function(summarize) {
+        $('#summarizedTextPop').text(summarize.summarizedTextPop);
+    });
+    
     $('#submitTextPop').click(function(){
          chrome.storage.sync.get('summarizedTextPop', function(summarize){
              var newSummary = "";
