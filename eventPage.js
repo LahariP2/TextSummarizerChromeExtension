@@ -8,14 +8,22 @@ chrome.runtime.onInstalled.addListener(function() {
     });
  });
 
- // When context menu item is clicked, summarize text
  chrome.contextMenus.onClicked.addListener(function(clickData) {
     if (clickData.menuItemId == "summarizeMenu" && clickData.selectionText) {
         chrome.storage.sync.get(['summarizedTextPop'], function(summarize) {
             var newSummary = "";
             newSummary += clickData.selectionText;
   
-            chrome.storage.sync.set({'summarizedTextPop': newSummary}, function(){});
+            chrome.storage.sync.set({'summarizedTextPop': newSummary}, function(){
+                chrome.notifications.create("summaryNotifEP",
+                    {
+                        type: 'basic',            
+                        iconUrl: 'icon48.png',
+                        title: 'Summarized Text',
+                        message: newSummary
+                    }
+                );
+            });
         });
     }
  });
